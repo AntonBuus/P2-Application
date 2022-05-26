@@ -8,9 +8,11 @@ public class GyroData : MonoBehaviour
 {
 
     private bool gyroEnabled;
-    float Gyromums;
+    //float Gyromums;
+    float GyroX;
+    float GyroY;
     //public Text Data;
-    Vector2 gyrovector;
+   // Vector2 gyrovector;
 
 
     private void Start()
@@ -32,11 +34,15 @@ public class GyroData : MonoBehaviour
 
         //Debug.Log(AttitudeSensor.current.attitude.ReadValue());
         Quaternion value = AttitudeSensor.current.attitude.ReadValue();
-        float x = (float)value.x;
-        float y = (float)value.y;
+        float x = value.x;
+        float y = value.y;
+
         //gyrovector = new Vector2(x, y);
 
-        Gyromums = (x + y) * 4;
+        //Gyromums = (x + y) * 4;
+
+        GyroX = x;
+        GyroY = y;
 
 
 
@@ -47,10 +53,17 @@ public class GyroData : MonoBehaviour
 
     }
 
-    public float GetGyro()
+    public float GetGyroX()
 
     {
-        return Gyromums;
+        return GyroX;
+    }
+
+    public float GetGyroY()
+
+    {
+
+        return GyroY;
     }
 
 }
